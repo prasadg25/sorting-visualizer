@@ -1,0 +1,18 @@
+# Generated application and runtime binaries
+*.exe
+*.dll
+
+# Build output and compiler artifacts
+build/
+bin/
+obj/
+*.o
+*.a
+*.gch
+
+# IDE and OS files
+.vs/
+.vscode/.browse.VC.db
+.vscode/*.log
+.DS_Store
+Thumbs.db

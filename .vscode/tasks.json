@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Sorting Visualizer",
+            "type": "shell",
+            "command": "${env:LOCALAPPDATA}\\Microsoft\\WinGet\\Packages\\BrechtSanders.WinLibs.POSIX.MSVCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-std=c++17",
+                "-O2",
+                "-Wall",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/SortingAlgorithms.cpp",
+                "${workspaceFolder}/Visualizer.cpp",
+                "-IC:/SFML/include",
+                "-LC:/SFML/lib",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
+                "-lsfml-audio",
+                "-o",
+                "${workspaceFolder}/SortingVisualizer.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Run Sorting Visualizer",
+            "type": "shell",
+            "command": ".\\SortingVisualizer.exe",
+            "dependsOn": "Build Sorting Visualizer",
+            "group": "test",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "Build & Run Sorting Visualizer",
+            "type": "shell",
+            "command": "${workspaceFolder}/SortingVisualizer.exe",
+            "dependsOn": "Build Sorting Visualizer",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            }
+        }
+    ]
+}
